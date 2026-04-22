@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indonesia Climate Dashboard | NOAA NCEI</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Boxicons for icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Leaflet.js -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Header Area -->
+        <aside class="sidebar glass-panel">
+            <div class="logo">
+                <i class='bx bx-cloud-lightning'></i>
+                <h1>JakKlim</h1>
+            </div>
+            <p class="subtitle">NOAA Climate Monitoring</p>
+
+            <div class="control-group token-section">
+                <label for="apiToken">NOAA API Token</label>
+                <div class="input-wrapper">
+                    <i class='bx bx-key'></i>
+                    <input type="password" id="apiToken" placeholder="Enter NCEI Token...">
+                </div>
+                <button id="saveTokenBtn" class="btn btn-primary">Save Token</button>
+            </div>
+
+            <div class="control-group filter-section">
+                <h3><i class='bx bx-filter-alt' ></i> Filters</h3>
+                
+                <div class="input-field">
+                    <label>Station (Selected via Map)</label>
+                    <input type="text" id="activeStationInput" value="GHCND:IDM00096749 (Soekarno Hatta)" disabled title="Select a station from the map">
+                </div>
+
+                <div class="input-field">
+                    <label for="startDate">Start Date</label>
+                    <input type="date" id="startDate" value="2025-01-01">
+                </div>
+
+                <div class="input-field">
+                    <label for="endDate">End Date</label>
+                    <input type="date" id="endDate" value="2025-01-31">
+                </div>
+
+                <button id="fetchDataBtn" class="btn btn-gradient">Fetch Data</button>
+            </div>
+
+            <div class="status-box" id="statusBox">
+                <i class='bx bx-info-circle'></i>
+                <span id="statusMessage">Waiting for token...</span>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Area -->
+        <main class="dashboard">
+            <header class="top-nav">
+                <h2>Indonesia Regional Overview</h2>
+                <div class="user-profile">
+                    <span>Admin</span>
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=random" alt="User">
+                </div>
+            </header>
+
+            <!-- KPI Summary Cards -->
+            <section class="kpi-cards">
+                <div class="card glass-panel kpi-card">
+                    <div class="kpi-icon temp-icon">
+                        <i class='bx bxs-thermometer'></i>
+                    </div>
+                    <div class="kpi-info">
+                        <h3>Avg Max Temp</h3>
+                        <p class="kpi-value" id="kpiTemp">-- °C</p>
+                    </div>
+                </div>
+                <div class="card glass-panel kpi-card">
+                    <div class="kpi-icon rain-icon">
+                        <i class='bx bx-water'></i>
+                    </div>
+                    <div class="kpi-info">
+                        <h3>Total Precipitation</h3>
+                        <p class="kpi-value" id="kpiRain">-- mm</p>
+                    </div>
+                </div>
+                <div class="card glass-panel kpi-card">
+                    <div class="kpi-icon stats-icon">
+                        <i class='bx bx-bar-chart-alt-2'></i>
+                    </div>
+                    <div class="kpi-info">
+                        <h3>Data Points</h3>
+                        <p class="kpi-value" id="kpiCount">--</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Narrative Summary -->
+            <section class="narrative-summary glass-panel" id="narrativeSummaryBox" style="display: none;">
+                <div class="summary-icon">
+                    <i class='bx bx-news'></i>
+                </div>
+                <div class="summary-content">
+                    <h3>Kesimpulan Cuaca Publik</h3>
+                    <p id="narrativeText">Silakan Fetch Data untuk memuat kesimpulan cuaca.</p>
+                </div>
+            </section>
+
+            <!-- Map Area -->
+            <section class="map-section glass-panel">
+                <h3><i class='bx bx-map-alt'></i> Interactive Station Map</h3>
+                <div id="stationMap" class="map-container"></div>
+            </section>
+
+            <!-- Charts Area -->
+            <section class="charts-grid">
+                <div class="chart-container glass-panel">
+                    <h3>Temperature Trends (TMAX)</h3>
+                    <div class="canvas-wrapper">
+                        <canvas id="tempChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-container glass-panel">
+                    <h3>Precipitation Distribution (PRCP)</h3>
+                    <div class="canvas-wrapper">
+                        <canvas id="rainChart"></canvas>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- App JS -->
+    <script src="./assets/js/app.js"></script>
+</body>
+</html>
