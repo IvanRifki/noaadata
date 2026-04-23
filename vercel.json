@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:match*",
+      "destination": "https://www.ncei.noaa.gov/:match*"
+    },
+    {
+      "source": "/bmkg/:match*",
+      "destination": "https://data.bmkg.go.id/:match*"
+    }
+  ]
+}
