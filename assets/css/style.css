@@ -373,3 +373,40 @@ hr {
 .status-box, .narrative-box {
     animation: fadeIn 0.3s ease-out;
 }
+
+/* Animasi Radar / Pulse untuk Marker Gempa Terkini */
+.pulse-ring {
+    position: absolute;
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    animation: pulsate 2s ease-out infinite;
+    z-index: 1;
+}
+
+@keyframes pulsate {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(8); opacity: 0; }
+}
+
+/* Animasi Pulse untuk Panel Informasi Peringatan */
+.alert-pulse {
+    animation: panel-pulse 2s infinite;
+}
+
+@keyframes panel-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); border-color: rgba(220, 38, 38, 1); }
+    70% { box-shadow: 0 0 0 15px rgba(220, 38, 38, 0); border-color: var(--border-color); }
+    100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); border-color: var(--border-color); }
+}
+
+.data-highlight {
+    animation: highlight-text 1.5s ease-out;
+}
+
+@keyframes highlight-text {
+    0% { background-color: #fef08a; }
+    100% { background-color: transparent; }
+}

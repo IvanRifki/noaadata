@@ -26,18 +26,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initMap() {
         if (!document.getElementById('stationMap')) return;
-        // Turn off default zoom to reposition it easily
+        // Turn off default zoom to reposition it easily. Set view to center of Indonesia.
         mapInstance = L.map('stationMap', { zoomControl: false }).setView([-2.5, 118.0], 5);
-        
+
         // Add zoom control manually below floating panels area
         L.control.zoom({ position: 'bottomright' }).addTo(mapInstance);
 
-        // Esri Ocean
-        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}', {
-            attribution: 'Tiles &copy; Esri, GEBCO, NOAA, CHS, OSU, UNH, CSUMB, NatGeo, DeLorme, NAVTEQ',
-            maxZoom: 13
-        }).addTo(mapInstance);
-        
+        // Deklarasi Pilihan Basemaps
+        const lightMap = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap contributors &copy; CARTO', maxZoom: 19
+        });
+        const darkMap = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap contributors &copy; CARTO', maxZoom: 19
+        });
+        const satelliteMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri'
+        });
+        const streetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors', maxZoom: 19
+        });
+
+        const baseMaps = {
+            "Tema Terang (Light)": lightMap,
+            "Tema Gelap (Dark)": darkMap,
+            "Satelit": satelliteMap,
+            "Jalan (Street)": streetMap
+        };
+
+        // Theme Set Default
+        satelliteMap.addTo(mapInstance);
+
+        // Tambah kontrol untuk mengubah tema peta
+        L.control.layers(baseMaps, null, { position: 'bottomright' }).addTo(mapInstance);
+
         setTimeout(() => mapInstance.invalidateSize(), 500);
     }
 
@@ -60,11 +81,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: { 
-                        legend: { 
-                            position: 'right', 
-                            labels: { boxWidth: 10, font: { size: 10 } } 
-                        } 
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: { boxWidth: 10, font: { size: 10 } }
+                        }
                     }
                 }
             });
@@ -100,15 +121,15 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             // Using vite proxy setup to bypass CORS locally
             const res = await fetch('/bmkg/DataMKG/TEWS/gempaterkini.xml');
-            if(!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+            if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
             const str = await res.text();
-            
+
             const parser = new DOMParser();
             const xml = parser.parseFromString(str, "application/xml");
-            
+
             const gempaNodes = xml.querySelectorAll('gempa');
             const eqData = [];
-            
+
             gempaNodes.forEach(node => {
                 eqData.push({
                     tanggal: node.querySelector('Tanggal').textContent,
@@ -140,28 +161,47 @@ document.addEventListener('DOMContentLoaded', () => {
         const latest = data[0];
 
         // Panel Update Update
-        if(latestMag) latestMag.textContent = latest.mag;
-        if(latestTime) latestTime.textContent = `${latest.tanggal}, ${latest.jam}`;
-        if(latestRelativeTime) latestRelativeTime.innerHTML = `<i class='bx bx-broadcast'></i> Sinkronisasi BMKG Sukses`;
-        if(latestCoords) latestCoords.textContent = `${latest.lintang}, ${latest.bujur}`;
-        if(latestDepth) latestDepth.textContent = latest.kedalaman;
-        if(latestRegion) latestRegion.textContent = latest.wilayah;
+        if (latestMag) latestMag.textContent = latest.mag;
+        if (latestTime) latestTime.textContent = `${latest.tanggal}, ${latest.jam}`;
+        if (latestRelativeTime) latestRelativeTime.innerHTML = `<i class='bx bx-broadcast'></i> Sinkronisasi BMKG Sukses`;
+        if (latestCoords) latestCoords.textContent = `${latest.lintang}, ${latest.bujur}`;
+        if (latestDepth) latestDepth.textContent = latest.kedalaman;
+        if (latestRegion) latestRegion.textContent = latest.wilayah;
 
-        if(alertMagBadge) alertMagBadge.textContent = latest.mag;
-        if(alertSendTime) alertSendTime.textContent = latest.dateTime.split('T')[0] + ' ' + latest.dateTime.substring(11, 19) + ' UTC';
-        if(alertTime) alertTime.textContent = latest.jam;
-        if(alertCoords) alertCoords.textContent = `${latest.lintang}, ${latest.bujur}`;
-        if(alertDepth) alertDepth.textContent = latest.kedalaman;
-        if(alertNarrative) alertNarrative.textContent = `Pusat gempa berada di darat/laut ${latest.wilayah}.`;
-        if(alertPotensi) alertPotensi.innerHTML = `<strong>Status Potensi Gempa:</strong><br>${latest.potensi}`;
+        if (alertMagBadge) alertMagBadge.textContent = latest.mag;
+        if (alertSendTime) alertSendTime.textContent = latest.dateTime.split('T')[0] + ' ' + latest.dateTime.substring(11, 19) + ' UTC';
+        if (alertTime) alertTime.textContent = latest.jam;
+        if (alertCoords) alertCoords.textContent = `${latest.lintang}, ${latest.bujur}`;
+        if (alertDepth) alertDepth.textContent = latest.kedalaman;
+        if (alertNarrative) alertNarrative.textContent = `Pusat gempa berada di darat/laut ${latest.wilayah}.`;
+        if (alertPotensi) alertPotensi.innerHTML = `<strong>Status Potensi Gempa:</strong><br>${latest.potensi}`;
 
-        let cat6=0, cat5=0, cat4=0;
+        // Panel efek highlight untuk menunjukkan data baru saja di sinkronisasi
+        const topLeftPanel = document.querySelector('.panel-top-left');
+        const topRightPanel = document.querySelector('.panel-top-right');
+
+        if (topLeftPanel) {
+            topLeftPanel.classList.remove('data-highlight');
+            void topLeftPanel.offsetWidth; // trigger reflow
+            topLeftPanel.classList.add('data-highlight');
+        }
+
+        // Terapkan efek pulse konstan jika magnitude cukup besar (>= 5.0) sebagai alert
+        if (topRightPanel) {
+            if (latest.mag >= 5.0) {
+                topRightPanel.classList.add('alert-pulse');
+            } else {
+                topRightPanel.classList.remove('alert-pulse');
+            }
+        }
+
+        let cat6 = 0, cat5 = 0, cat4 = 0;
         let depthLabels = [];
         let depthValues = [];
 
-        data.forEach(eq => {
-            const [lng, lat] = eq.coords.split(',').map(Number); // BMKG specifies point: Longitude, Latitude
-            
+        data.forEach((eq, index) => {
+            const [lat, lng] = eq.coords.split(',').map(Number); // BMKG Coordinates are generally Lat, Lng
+
             let color = '#10b981'; // Green
             if (eq.mag >= 6.0) { color = '#dc2626'; cat6++; } // Red
             else if (eq.mag >= 5.0) { color = '#f59e0b'; cat5++; } // Yellow
@@ -169,19 +209,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Circle base size scaled logarithmically or linearly by magnitude
             // e.g. M 5 => 15px, M 7 => 21px
-            const size = Math.max(12, eq.mag * 3.5); 
-            
-            const circleHtml = `<div class="eq-marker" style="width: 100%; height: 100%; background: ${color};"></div>`;
+            const size = Math.max(12, eq.mag * 3.5);
+
+            let circleHtml = `<div class="eq-marker" style="width: 100%; height: 100%; background: ${color}; position:relative; z-index:2;"></div>`;
+
+            // Animasi radar ping (pulse) KHUSUS untuk gempa terkini/terbaru (array ke-0)
+            if (index === 0) {
+                circleHtml += `<div class="pulse-ring" style="border: 2.5px solid ${color};"></div>`;
+            }
+
             const icon = L.divIcon({
-                html: circleHtml,
+                html: `<div style="position: relative; width: 100%; height: 100%;">${circleHtml}</div>`,
                 className: 'leaflet-div-icon',
                 iconSize: [size, size],
-                iconAnchor: [size/2, size/2]
+                iconAnchor: [size / 2, size / 2]
             });
 
             // Note: Coordinate layout in Leaflet is Lat, Lng
-            const marker = L.marker([lat, lng], {icon: icon}).addTo(mapInstance);
-            
+            const marker = L.marker([lat, lng], { icon: icon }).addTo(mapInstance);
+
             const popupContent = `
                 <div style="font-family:Inter; font-size:12px; min-width: 180px;">
                     <div style="background: ${color}; color:#fff; padding:4px 8px; font-weight:bold; font-size:14px; border-radius:2px; margin-bottom:4px;">
@@ -206,24 +252,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Update Charts
-        if(magPieChartInstance) {
+        if (magPieChartInstance) {
             magPieChartInstance.data.datasets[0].data = [cat6, cat5, cat4];
             magPieChartInstance.update();
         }
-        if(depthChartInstance) {
+        if (depthChartInstance) {
             // Reversing the array to show oldest to newest (or vice versa depending on preference)
             depthChartInstance.data.labels = depthLabels.reverse();
             depthChartInstance.data.datasets[0].data = depthValues.reverse();
             depthChartInstance.update();
         }
 
-        // Set view to focus exactly on the latest earthquake
-        const [latestLng, latestLat] = latest.coords.split(',').map(Number);
-        
-        mapInstance.setView([latestLat, latestLng], 6, {
-            animate: true,
-            duration: 1.5
-        });
+        // Tetap pada posisi awal peta Indonesia yang di inisiasi di `initMap` ([-2.5, 118.0])
+        // Tidak perlu flyTo ke posisi gempa terbaru jika ingin tetap menampilkan semua data wilayah Indonesia
+        // Pilihan: Jika mau kembali men-center ke indonesia bisa dengan command ini: 
+        // mapInstance.setView([-2.5, 118.0], 5, { animate: true });
 
         // Optionally open popup of latest automatically
         // ...
