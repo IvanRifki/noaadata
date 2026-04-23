@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Peringatan Dini BMKG INATEWS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        .leaflet-div-icon {
+            background: transparent;
+            border: none;
+            overflow: visible !important;
+        }
+        .eq-marker {
+            border-radius: 50%;
+            border: 1.5px solid #fff;
+            box-shadow: 0 0 4px rgba(0,0,0,0.5);
+        }
+    </style>
+  <script type="module" crossorigin src="/assets/index-BIBRNnJX.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-D16Fp5vv.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Full Screen Map -->
+        <div id="stationMap" class="map-fullscreen"></div>
+
+        <!-- Top Left Panel: Latest Earthquake -->
+        <div class="floating-panel panel-top-left">
+            <div class="panel-header" style="background: #e2e8f0; color: #475569;">::Gempa Realtime Terakhir::</div>
+            <div class="panel-body">
+                <div style="font-size: 11px; color: #64748b; margin-bottom: 8px;">Area Indonesia - Gempa terkini</div>
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <div id="latestMag" style="font-size: 40px; font-weight: 800; color: #dc2626;">--</div>
+                    <div>
+                        <div id="latestTime" style="font-weight: 600; font-size: 13px; color: #334155;">--</div>
+                        <div id="latestRelativeTime" style="color: #dc2626; font-size: 13px; font-weight: 600; margin-top:2px;">
+                            <i class='bx bx-alarm'></i> Memuat data...
+                        </div>
+                    </div>
+                </div>
+                <hr style="margin: 12px 0;">
+                <div style="display: flex; gap: 8px; align-items: flex-start;">
+                    <i class='bx bx-target-lock' style="color: #dc2626; font-size: 16px; margin-top: 2px;"></i>
+                    <div style="font-size: 13px; color: #334155;">
+                        <span id="latestCoords" style="font-weight: 600;">--</span> || <span id="latestDepth">--</span><br>
+                        <span id="latestRegion" style="display: block; margin-top: 4px; color: #64748b;">--</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Right Panel: Alert Info -->
+        <div class="floating-panel panel-top-right">
+            <div style="display: flex;">
+                <div id="alertMagBadge" style="background: #dc2626; color: #fff; width: 60px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 800;">
+                    --
+                </div>
+                <div style="background: #fde047; padding: 8px 12px; flex: 1;">
+                    <b style="font-size: 12px; color: #000;">INFO RESMI BMKG</b><br>
+                    <b style="font-size: 13px; color: #000;">INFO GEMPA TERKINI</b><br>
+                    <div id="alertSendTime" style="font-size: 10px; color: #000; margin-top: 2px;">--</div>
+                </div>
+            </div>
+            <div style="background: #eff6ff; text-align: center; font-size: 12px; font-weight: 600; padding: 4px; border-bottom: 1px solid #cbd5e1; color: #1e3a8a;">
+                MODE OPERASIONAL
+            </div>
+            <div class="panel-body" style="padding: 12px; gap: 8px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; text-align: center; gap: 8px; font-size: 12px;">
+                    <div>
+                        <div style="color: #64748b; font-size: 10px;">Waktu Gempa</div>
+                        <i class='bx bx-time-five' style="color: #dc2626;"></i> <b id="alertTime">--</b>
+                    </div>
+                    <div>
+                        <div style="color: #64748b; font-size: 10px;">Lokasi</div>
+                        <i class='bx bx-target-lock' style="color: #f59e0b;"></i> <b id="alertCoords">--</b>
+                    </div>
+                    <div>
+                        <div style="color: #64748b; font-size: 10px;">Kedalaman</div>
+                        <i class='bx bx-water' style="color: #10b981;"></i> <b id="alertDepth">--</b>
+                    </div>
+                </div>
+                <div id="alertNarrative" style="background: #86efac; border: 1px solid #4ade80; padding: 8px; font-size: 11px; color: #064e3b; border-radius: 2px; margin-top:4px;">
+                    Memuat informasi wilayah...
+                </div>
+                <div id="alertPotensi" style="background: #dc2626; color: white; padding: 8px; font-size: 11px; border-radius: 2px;">
+                    <strong>Arahan BMKG:</strong><br>
+                    Hati-hati terhadap gempabumi susulan yang mungkin terjadi.
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Left: Legend -->
+        <div class="floating-panel panel-bottom-left" style="bottom: 20px; left: 20px; width: 280px;">
+            <div class="panel-header" style="background: #e2e8f0; font-size: 12px;">::Legenda Magnitudo::</div>
+            <div class="panel-body" style="padding: 12px;">
+                <div style="display: flex; gap: 8px; align-items: center; font-size: 11px; justify-content: center; margin-bottom: 8px;">
+                    <div style="width:10px; height:10px; background:#10b981; border-radius:50%;"></div> &lt; M 4.0
+                    <div style="width:14px; height:14px; background:#f59e0b; border-radius:50%; margin-left: 8px;"></div> M 4.0 - 5.0
+                    <div style="width:18px; height:18px; background:#dc2626; border-radius:50%; margin-left: 8px;"></div> &gt; M 5.0
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Panel Center: Charts -->
+        <div class="floating-panel panel-bottom-center" style="bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: row; align-items: center; background: rgba(255,255,255,0.95); padding: 0;">
+            <!-- Magnitude Pie Chart -->
+            <div class="chart-wrapper" style="width: 250px; padding: 12px; border-right: 1px solid #cbd5e1;">
+                <h4 style="font-size: 11px; text-align: center; color: #475569; margin-bottom: 4px;">Komposisi Magnitudo (M > 4.0)</h4>
+                <div style="position: relative; height: 120px;">
+                    <canvas id="magPieChart"></canvas>
+                </div>
+            </div>
+            <!-- Depth Bar Chart -->
+            <div class="chart-wrapper" style="width: 320px; padding: 12px;">
+                <h4 style="font-size: 11px; text-align: center; color: #475569; margin-bottom: 4px;">Histogram Kedalaman Gempa (Km)</h4>
+                <div style="position: relative; height: 120px;">
+                    <canvas id="depthChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</body>
+</html>
