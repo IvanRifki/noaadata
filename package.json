@@ -1,6 +1,7 @@
 {
   "name": "noaadata",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite --port 3000",
     "build": "vite build",
