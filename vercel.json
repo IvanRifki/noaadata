@@ -7,6 +7,14 @@
     {
       "source": "/bmkg/:match*",
       "destination": "https://data.bmkg.go.id/:match*"
+    },
+    {
+      "source": "/cuaca/:match*",
+      "destination": "https://api.bmkg.go.id/publik/prakiraan-cuaca/:match*"
+    },
+    {
+      "source": "/nowcast/:match*",
+      "destination": "https://www.bmkg.go.id/alerts/nowcast/id/:match*"
     }
   ]
 }

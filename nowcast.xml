@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <?xml-stylesheet type="text/xsl" href="/cap/nowcast-rss-style.xsl"?>
+    <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+        <channel>
+            <title>Peringatan Dini Cuaca BMKG</title>
+            <link>https://www.bmkg.go.id/alerts/nowcast/id/rss.xml</link>
+            <description>Peringatan Dini Cuaca dari BMKG (Badan Meteorologi, Klimatologi, dan Geofisika)</description>
+            <atom:link href="https://www.bmkg.go.id/alerts/nowcast/id/rss.xml" rel="self" type="application/rss+xml"/>
+            <language>id</language>
+            <copyright>public domain</copyright>
+            <pubDate>Thu, 23 Apr 2026 04:15:29 +0000</pubDate>
+            <lastBuildDate>Thu, 23 Apr 2026 04:15:29 +0000</lastBuildDate>
+            <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+            
+        <item>
+            <title>Hujan Lebat disertai Petir di Maluku</title>
+            <link>https://www.bmkg.go.id/alerts/nowcast/id/CML20260423004_alert.xml</link>
+            <description>Hujan lebat disertai petir akan terjadi pada 23 April 2026, 13:00 WIT di sebagian wilayah Maluku, khususnya di Aru Selatan, Aru Selatan Timur, Aru Selatan Utara, Aru Tengah Selatan, Aru Tengah Timur, Aru Utara Timur Batuley, Baguala, Banda, Elpaputih, Huamual Belakang, Inamosol, Kei Kecil Barat, Molu Maru, Nusaniwe, Selaru, Sir-Sir, Sirimau, Teluk Ambon.
+ Kondisi ini berpotensi menimbulkan dampak berupa jarak pandang berkurang, angin kencang, dan banjir lokal.
+ Masyarakat dihimbau untuk tetap waspada, mengurangi aktivitas di luar ruangan, serta mengambil langkah-langkah pencegahan yang diperlukan guna menjaga keselamatan.
+ Kondisi diperkirakan dapat berlangsung hingga 23 April 2026, 16:00 WIT.</description>
+            <author>cuaca.ekstrem@bmkg.go.id (BMKG)</author>
+            <category>Met</category>
+            <guid isPermaLink="false">2.49.0.1.360.0.2026.04.23.04.81.004</guid>
+            <pubDate>Thu, 23 Apr 2026 12:45:00 +0900</pubDate>
+        </item>
+
+        <item>
+            <title>Hujan Lebat disertai Petir di Riau</title>
+            <link>https://www.bmkg.go.id/alerts/nowcast/id/CRU20260423001_alert.xml</link>
+            <description>Hujan lebat disertai petir akan terjadi pada 23 April 2026, 10:40 WIB di sebagian wilayah Riau, khususnya di Bantan, Bengkalis, Bukit Batu, Koto Gasib, Kuala Kampar, Rangsang, Tebing Tinggi Timur, Tualang.
+ Kondisi ini berpotensi menimbulkan dampak berupa jarak pandang berkurang, angin kencang, dan banjir lokal.
+ Masyarakat dihimbau untuk tetap waspada, mengurangi aktivitas di luar ruangan, serta mengambil langkah-langkah pencegahan yang diperlukan guna menjaga keselamatan.
+ Kondisi diperkirakan dapat berlangsung hingga 23 April 2026, 14:00 WIB.</description>
+            <author>cuaca.ekstrem@bmkg.go.id (BMKG)</author>
+            <category>Met</category>
+            <guid isPermaLink="false">2.49.0.1.360.0.2026.04.23.04.14.001</guid>
+            <pubDate>Thu, 23 Apr 2026 10:30:00 +0700</pubDate>
+        </item>
+
+        <item>
+            <title>Hujan Lebat disertai Petir di Nusa Tenggara Timur</title>
+            <link>https://www.bmkg.go.id/alerts/nowcast/id/CNT20260423005_alert.xml</link>
+            <description>Hujan lebat disertai petir akan terjadi pada 23 April 2026, 12:00 WITA di sebagian wilayah Nusa Tenggara Timur, khususnya di Alor Tengah Utara, Alor Timur, Alor Timur Laut, Lembur, Pantar Barat, Pantar Baru Laut, Pantar Tengah.
+ Kondisi ini berpotensi menimbulkan dampak berupa jarak pandang berkurang, angin kencang, dan banjir lokal.
+ Masyarakat dihimbau untuk tetap waspada, mengurangi aktivitas di luar ruangan, serta mengambil langkah-langkah pencegahan yang diperlukan guna menjaga keselamatan.
+ Kondisi diperkirakan dapat berlangsung hingga 23 April 2026, 15:00 WITA.</description>
+            <author>cuaca.ekstrem@bmkg.go.id (BMKG)</author>
+            <category>Met</category>
+            <guid isPermaLink="false">2.49.0.1.360.0.2026.04.23.04.53.005</guid>
+            <pubDate>Thu, 23 Apr 2026 11:30:00 +0800</pubDate>
+        </item>
+
+        <item>
+            <title>Hujan Lebat disertai Petir di Nusa Tenggara Timur</title>
+            <link>https://www.bmkg.go.id/alerts/nowcast/id/CNT20260423004_alert.xml</link>
+            <description>Hujan lebat disertai petir akan terjadi pada 23 April 2026, 12:00 WITA di sebagian wilayah Nusa Tenggara Timur, khususnya di Alor Tengah Utara, Alor Timur, Alor Timur Laut, Lembur, Pantar Barat, Pantar Baru Laut, Pantar Tengah.
+ Kondisi ini berpotensi menimbulkan dampak berupa jarak pandang berkurang, angin kencang, dan banjir lokal.
+ Masyarakat dihimbau untuk tetap waspada, mengurangi aktivitas di luar ruangan, serta mengambil langkah-langkah pencegahan yang diperlukan guna menjaga keselamatan.
+ Kondisi diperkirakan dapat berlangsung hingga 23 April 2026, 15:00 WITA.</description>
+            <author>cuaca.ekstrem@bmkg.go.id (BMKG)</author>
+            <category>Met</category>
+            <guid isPermaLink="false">2.49.0.1.360.0.2026.04.23.04.53.004</guid>
+            <pubDate>Thu, 23 Apr 2026 11:30:00 +0800</pubDate>
+        </item>
+
+        <item>
+            <title>Hujan Lebat disertai Petir di Kalimantan Utara</title>
+            <link>https://www.bmkg.go.id/alerts/nowcast/id/CKU20260423003_alert.xml</link>
+            <description>Hujan lebat disertai petir akan terjadi pada 23 April 2026, 11:10 WITA di sebagian wilayah Kalimantan Utara, khususnya di Bunyu, Sebuku, Sekatak, Sembakung, Sesayap Hilir, Tana Lia, Tanjung Palas Tengah, Tanjung Palas Timur, Tulin Onsoi.
+ Kondisi ini berpotensi menimbulkan dampak berupa jarak pandang berkurang, angin kencang, dan banjir lokal.
+ Masyarakat dihimbau untuk tetap waspada, mengurangi aktivitas di luar ruangan, serta mengambil langkah-langkah pencegahan yang diperlukan guna menjaga keselamatan.
+ Kondisi diperkirakan dapat berlangsung hingga 23 April 2026, 14:00 WITA.</description>
+            <author>cuaca.ekstrem@bmkg.go.id (BMKG)</author>
+            <category>Met</category>
+            <guid isPermaLink="false">2.49.0.1.360.0.2026.04.23.04.65.003</guid>
+            <pubDate>Thu, 23 Apr 2026 11:00:00 +0800</pubDate>
+        </item>
+
+        <item>
+            <title>Hujan Lebat disertai Petir di Papua</title>
+            <link>https://www.bmkg.go.id/alerts/nowcast/id/CPU20260423001_alert.xml</link>
+            <description>Hujan lebat disertai petir akan terjadi pada 23 April 2026, 12:15 WIT di sebagian wilayah Papua, khususnya di Angkaisera, Anotaurei, Yapen Selatan.
+ Kondisi ini berpotensi menimbulkan dampak berupa jarak pandang berkurang, angin kencang, dan banjir lokal.
+ Masyarakat dihimbau untuk tetap waspada, mengurangi aktivitas di luar ruangan, serta mengambil langkah-langkah pencegahan yang diperlukan guna menjaga keselamatan.
+ Kondisi diperkirakan dapat berlangsung hingga 23 April 2026, 13:15 WIT.</description>
+            <author>cuaca.ekstrem@bmkg.go.id (BMKG)</author>
+            <category>Met</category>
+            <guid isPermaLink="false">2.49.0.1.360.0.2026.04.23.04.91.001</guid>
+            <pubDate>Thu, 23 Apr 2026 11:45:00 +0900</pubDate>
+        </item>
+
+        <item>
+            <title>Hujan Lebat disertai Petir di Maluku</title>
+            <link>https://www.bmkg.go.id/alerts/nowcast/id/CML20260423002_alert.xml</link>
+            <description>Hujan lebat disertai petir akan terjadi pada 23 April 2026, 11:45 WIT di sebagian wilayah Maluku, khususnya di Ambalau, Aru Selatan, Aru Selatan Timur, Aru Tengah Selatan, Dawelor Dawera, Fordata, Kairatu, Leihitu, Leihitu Barat, Mndona Hiera, Pulau Masela, Pulau Wetang, Pulau-Pulau Babar, Pulau-Pulau Babar Timur, Saparua, Tanimbar Utara.
+ Kondisi ini berpotensi menimbulkan dampak berupa jarak pandang berkurang, angin kencang, dan banjir lokal.
+ Masyarakat dihimbau untuk tetap waspada, mengurangi aktivitas di luar ruangan, serta mengambil langkah-langkah pencegahan yang diperlukan guna menjaga keselamatan.
+ Kondisi diperkirakan dapat berlangsung hingga 23 April 2026, 14:45 WIT.</description>
+            <author>cuaca.ekstrem@bmkg.go.id (BMKG)</author>
+            <category>Met</category>
+            <guid isPermaLink="false">2.49.0.1.360.0.2026.04.23.04.81.002</guid>
+            <pubDate>Thu, 23 Apr 2026 11:30:00 +0900</pubDate>
+        </item>
+
+        <item>
+            <title>Hujan Lebat disertai Petir di Maluku</title>
+            <link>https://www.bmkg.go.id/alerts/nowcast/id/CML20260423003_alert.xml</link>
+            <description>Hujan lebat disertai petir akan terjadi pada 23 April 2026, 11:45 WIT di sebagian wilayah Maluku, khususnya di Ambalau, Aru Selatan, Aru Selatan Timur, Aru Tengah Selatan, Dawelor Dawera, Fordata, Kairatu, Leihitu, Leihitu Barat, Mndona Hiera, Nusaniwe, Pulau Masela, Pulau Wetang, Pulau-Pulau Babar, Pulau-Pulau Babar Timur, Saparua, Sirimau, Tanimbar Utara.
+ Kondisi ini berpotensi menimbulkan dampak berupa jarak pandang berkurang, angin kencang, dan banjir lokal.
+ Masyarakat dihimbau untuk tetap waspada, mengurangi aktivitas di luar ruangan, serta mengambil langkah-langkah pencegahan yang diperlukan guna menjaga keselamatan.
+ Kondisi diperkirakan dapat berlangsung hingga 23 April 2026, 14:45 WIT.</description>
+            <author>cuaca.ekstrem@bmkg.go.id (BMKG)</author>
+            <category>Met</category>
+            <guid isPermaLink="false">2.49.0.1.360.0.2026.04.23.04.81.003</guid>
+            <pubDate>Thu, 23 Apr 2026 11:30:00 +0900</pubDate>
+        </item>
+
+        <item>
+            <title>Hujan Lebat disertai Petir di Nusa Tenggara Timur</title>
+            <link>https://www.bmkg.go.id/alerts/nowcast/id/CNT20260423002_alert.xml</link>
+            <description>Hujan lebat disertai petir akan terjadi pada 23 April 2026, 10:35 WITA di sebagian wilayah Nusa Tenggara Timur, khususnya di Lobalain, Pantai Baru, Rote  Selatan, Rote Barat Laut, Rote Tengah.
+ Kondisi ini berpotensi menimbulkan dampak berupa jarak pandang berkurang, angin kencang, dan banjir lokal.
+ Masyarakat dihimbau untuk tetap waspada, mengurangi aktivitas di luar ruangan, serta mengambil langkah-langkah pencegahan yang diperlukan guna menjaga keselamatan.
+ Kondisi diperkirakan dapat berlangsung hingga 23 April 2026, 13:30 WITA.</description>
+            <author>cuaca.ekstrem@bmkg.go.id (BMKG)</author>
+            <category>Met</category>
+            <guid isPermaLink="false">2.49.0.1.360.0.2026.04.23.04.53.002</guid>
+            <pubDate>Thu, 23 Apr 2026 10:10:00 +0800</pubDate>
+        </item>
+
+        <item>
+            <title>Hujan Lebat disertai Petir di Kep. Bangka Belitung</title>
+            <link>https://www.bmkg.go.id/alerts/nowcast/id/CBB20260423002_alert.xml</link>
+            <description>Hujan lebat disertai petir akan terjadi pada 23 April 2026, 09:04 WIB di sebagian wilayah Kep. Bangka Belitung, khususnya di Belinyu, Riau Silip.
+ Kondisi ini berpotensi menimbulkan dampak berupa jarak pandang berkurang, angin kencang, dan banjir lokal.
+ Masyarakat dihimbau untuk tetap waspada, mengurangi aktivitas di luar ruangan, serta mengambil langkah-langkah pencegahan yang diperlukan guna menjaga keselamatan.
+ Kondisi diperkirakan dapat berlangsung hingga 23 April 2026, 11:04 WIB.</description>
+            <author>cuaca.ekstrem@bmkg.go.id (BMKG)</author>
+            <category>Met</category>
+            <guid isPermaLink="false">2.49.0.1.360.0.2026.04.23.04.19.002</guid>
+            <pubDate>Thu, 23 Apr 2026 08:54:00 +0700</pubDate>
+        </item>
+        </channel>
+    </rss>

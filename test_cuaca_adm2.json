@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Data BMKG yang tersedia dalam format terbuka dan mudah digunakan kembali, dengan tujuan untuk meningkatkan transparansi dan akuntabilitas pemerintah.">
+    <meta name="keywords" content="BMKG, Pemerintah, Indonesia Data, Terbuka, Cuaca, Gempabumi">
+    <meta name="author" content="BMKG">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Data Prakiraan Cuaca Terbuka BMKG">
+    <meta property="og:image" content="https://data.bmkg.go.id/include/assets/img/splash.png">
+    <meta property="og:description" content="Data BMKG yang tersedia dalam format terbuka dan mudah digunakan kembali, dengan tujuan untuk meningkatkan transparansi dan akuntabilitas pemerintah.">
+    <meta property="og:url" content="https://data.bmkg.go.id">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@infoBMKG">
+    <meta name="twitter:creator" content="@infoBMKG">
+    <meta name="twitter:title" content="Data Prakiraan Cuaca Terbuka BMKG">
+    <meta name="twitter:description" content="Data BMKG yang tersedia dalam format terbuka dan mudah digunakan kembali, dengan tujuan untuk meningkatkan transparansi dan akuntabilitas pemerintah.">
+    <meta name="twitter:image" content="https://data.bmkg.go.id/include/assets/img/splash.png">
+
+    <title>Data Prakiraan Cuaca Terbuka BMKG</title>
+    <link rel="shortcut icon" href="../include/assets/img/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="../include/assets/img/favicon-60@3x.png" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,400i|Roboto:500" rel="stylesheet">
+    <link rel="stylesheet" href="../include/assets/styles.css">
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+</head>
+<body class="is-boxed has-animations">
+    <div class="body-wrap boxed-container">
+        <header class="site-header">
+            <div class="container">
+                <div class="site-header-inner">
+                    <div class="brand header-brand">
+                        <h1 class="m-0">
+                            <a href="..">
+                                <img src="../include/assets/img/logo-bmkg.svg" width="48" height="auto">
+                            </a>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero text-center">
+                <div class="container-sm">
+                    <div class="hero-inner">
+                        <h1 class="hero-title h2-mobile mt-0 is-revealing">Data Prakiraan Cuaca Terbuka BMKG</h1>
+                        <div class="content-left">
+                            <img class="data-icon-single" src="../include/assets/img/cuaca.svg">
+                            <p>Data prakiraan cuaca seluruh kelurahan dan desa di Indonesia dalam waktu 3 harian. Dalam 1 hari terdapat 8 data prakiraan cuaca (per 3 jam).</p>
+                            <ul>
+                                <li>Format data: <pre>JSON</pre></li>
+                                <li>Jumlah data prakiraan: 3 hari</li>
+								<li>Jumlah data prakiraan dalam 1 hari: per 3 jam</li>
+								<li>Pemutakhiran data: 2 kali sehari</li>
+								<li>Lokasi kelurahan/desa: menggunakan kode wilayah administrasi tingkat IV dapat mengacu pada <strong>Keputusan Menteri Dalam Negeri Nomor 100.1.1-6117 Tahun 2022</strong>. Contoh: kode wilayah Kelurahan Kemayoran: <strong>31.71.03.1001</strong></li>
+								<li>Batas akses: 60 permintaan per menit per IP</li>
+							</ul>
+							
+							<div class="alert">
+								<strong>Perhatian!</strong> Wajib untuk mencantumkan BMKG (Badan Meteorologi, Klimatologi, dan Geofisika) sebagai sumber data dan menampilkannya pada aplikasi/sistem Anda.
+							</div>
+                            
+                            <h3>Akses API</h3>
+							<div class="info">
+								<pre>$ curl https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4={kode_wilayah_tingkat_iv}</pre>
+								<pre>$ curl https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4=31.71.03.1001</pre>
+							</div>
+                            
+                           <h3>Parameter (<em>key</em>)</h3>
+                            <ul>
+                                <li><pre>utc_datetime</pre>: Waktu dalam UTC-<pre>YYYY-MM-DD HH:mm:ss</pre></li>
+								<li><pre>local_datetime</pre>: Waktu lokal-<pre>YYYY-MM-DD HH:mm:ss</pre></li>
+								<li><pre>t</pre>: Suhu Udara dalam &deg;C</li>
+								<li><pre>hu</pre>: Kelembapan Udara dalam %</li>
+								<li><pre>weather_desc</pre>: Kondisi Cuaca dalam Indonesia</li>
+								<li><pre>weather_desc_en</pre>: Kondisi Cuaca dalam English</li>
+								<li><pre>ws</pre>: Kecepatan Angin dalam km/jam</li>
+								<li><pre>wd</pre>: Arah Angin dari</li>
+								<li><pre>tcc</pre>: Tutupan Awan dalam %</li>
+								<li><pre>vs_text</pre>: Jarak Pandang dalam km</li>
+								<li><pre>analysis_date</pre>: Waktu produksi data prakiraan cuaca dalam UTC-<pre>YYYY-MM-DDTHH:mm:ss</pre></li>
+                            </ul>
+							
+							<h3>Mengolah Data JSON</h3>
+							<p>Silakan gunakan kode baris pemrograman untuk mengolah data JSON yang telah tersedia di portal Github BMKG <a href="https://github.com/infoBMKG/data-cuaca" target="_blank">https://github.com/infoBMKG/data-cuaca</a></p>
+							
+							<hr>
+							<small>Diperbarui pada: 3 September 2025</small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+		<section id="data" class="features section text-center">
+                <div class="container">
+                    <div class="features-inner section-inner has-bottom-divider">
+                        <div class="features-wrap">
+                            <div class="feature is-revealing">
+                                <div class="feature-inner inside-link">
+                                    <div class="feature-icon">
+                                        <img class="data-icon" src="../include/assets/img/cuaca.svg">
+                                    </div>
+                                    <h3 class="feature-title">Data Prakiraan Cuaca</h3>
+                                    <p class="text-sm">Data prakiraan cuaca kelurahan dan desa di Indonesia dalam waktu 3 harian.</p>
+									<a class="all-link" href="../prakiraan-cuaca"></a>
+									<div class="control control-expanded">
+										<a class="button button-primary button-shadow" href="../prakiraan-cuaca">Selengkapnya</a>
+									</div>
+                                </div>
+                            </div>
+                            <div class="feature is-revealing">
+                                <div class="feature-inner inside-link">
+                                    <div class="feature-icon">
+                                        <img class="data-icon" src="../include/assets/img/gempa.svg">
+                                    </div>
+                                    <h3 class="feature-title">Data Gempabumi</h3>
+                                    <p class="text-sm">Data kejadian gempabumi yang terjadi di seluruh wilayah Indonesia.</p>
+									<a class="all-link" href="../gempabumi"></a>
+									<div class="control control-expanded">
+										<a class="button button-primary button-shadow" href="../gempabumi">Selengkapnya</a>
+									</div>
+                                </div>
+                            </div>
+							<div class="feature is-revealing">
+                                <div class="feature-inner inside-link">
+                                    <div class="feature-icon">
+                                        <img class="data-icon" src="../include/assets/img/nowcast.svg">
+                                    </div>
+                                    <h3 class="feature-title">Peringatan Dini Cuaca</h3>
+                                    <p class="text-sm">Data peringatan dini cuaca (nowcast) hingga level kecamatan di Indonesia.</p>
+									<a class="all-link" href="../peringatan-dini-cuaca"></a>
+									<div class="control control-expanded">
+										<a class="button button-primary button-shadow" href="../peringatan-dini-cuaca">Selengkapnya</a>
+									</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="newsletter section">
+                <div class="container-sm">
+                    <div class="newsletter-inner section-inner">
+                        <div class="newsletter-header text-center is-revealing">
+                            <h2 class="section-title mt-0">Hubungi Kami</h2>
+                            <p class="section-paragraph">Silakan hubungi kami melalui email</p>
+                        </div>
+                        <div class="footer-form newsletter-form field field-grouped is-revealing">
+                            <div class="control control-expanded">
+                                <a class="button button-primary button-shadow" href="#">support[at]bmkg.go.id</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+		
+		<footer class="site-footer text-light">
+            <div class="container">
+                <div class="site-footer-inner">
+                    <div class="brand footer-brand">
+                        <a href="/">
+                            <img src="../include/assets/img/logo-bmkg.svg" width="36" height="auto">
+                        </a>
+                    </div>
+                    <ul class="footer-links list-reset">
+                        <li>
+                            <a href="../tentang">Tentang</a>
+                        </li>
+                        <li>
+                            <a href="https://www.bmkg.go.id" target="_blank">BMKG.go.id</a>
+                        </li>
+                    </ul>
+                    <ul class="footer-social-links list-reset">
+                        <li>
+                            <a href="https://twitter.com/infoBMKG" target="_blank">
+                                <span class="screen-reader-text">Twitter</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 46 46" role="img" aria-labelledby="twitter-icon">
+                                    <title id="twitter-icon">Twitter</title>
+                                    <path fill="#FFFFFF" d="M31.52 17.716c-.627.278-1.302.466-2.008.55.722-.432 1.275-1.116 1.536-1.933-.676.4-1.422.69-2.22.847-.637-.68-1.546-1.103-2.552-1.103-1.93 0-3.494 1.565-3.494 3.495 0 .273.03.54.09.796-2.904-.146-5.48-1.536-7.205-3.653-.3.52-.473 1.12-.473 1.76 0 1.212.617 2.28 1.555 2.908-.576-.017-1.115-.176-1.587-.436v.043c0 1.694 1.205 3.107 2.805 3.427-.295.082-.603.123-.923.123-.225 0-.444-.02-.657-.062.445 1.388 1.736 2.4 3.266 2.425-1.196.94-2.704 1.498-4.34 1.498-.283 0-.562-.013-.835-.046 1.55.99 3.385 1.568 5.36 1.568 6.43 0 9.944-5.323 9.944-9.94 0-.153-.003-.306-.01-.454.684-.492 1.278-1.108 1.745-1.81"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/infoBMKG" target="_blank">
+                                <span class="screen-reader-text">Facebook</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 46 46" role="img" aria-labelledby="facebook-icon">
+                                    <title id="facebook-icon">Facebook</title>
+                                    <path fill="#FFFFFF" d="M18.896 20.12h1.758v-1.708c0-.753.02-1.915.566-2.635.576-.762 1.368-1.28 2.73-1.28 2.218 0 3.15.316 3.15.316l-.438 2.605s-.73-.212-1.417-.212c-.684 0-1.296.245-1.296.93v1.985h2.803l-.194 2.547h-2.61v8.84h-3.297v-8.84h-1.758V20.12z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/infoBMKG" target="_blank">
+                                <span class="screen-reader-text">Instagram</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 46 46" role="img" aria-labelledby="instagram-icon">
+                                    <title id="instagram-icon">Instagram</title>
+                                    <path fill="#FFFFFF" d="M29.76 29.03v-7.373h-1.537c.152.48.23.975.23 1.49 0 .958-.243 1.838-.73 2.647-.485.807-1.146 1.447-1.98 1.918-.834.47-1.744.705-2.73.705-1.495 0-2.773-.514-3.835-1.543-1.062-1.027-1.593-2.27-1.593-3.726 0-.517.076-1.013.228-1.49H16.21v7.373c0 .2.065.37.2.5.13.14.296.2.494.2H29.07c.188 0 .352-.06.488-.2s.202-.3.202-.49zm-3.233-6.064c0-.94-.343-1.743-1.03-2.406-.686-.664-1.515-.996-2.486-.996-.96 0-1.78.332-2.47.996-.68.663-1.03 1.466-1.03 2.406 0 .942.35 1.743 1.03 2.407s1.51.996 2.48.996c.975 0 1.8-.34 2.49-1s1.03-1.47 1.03-2.41zm3.233-4.097v-1.88c0-.22-.076-.4-.23-.56-.15-.158-.336-.235-.556-.235h-1.98c-.22 0-.406.08-.558.233-.15.155-.228.34-.228.552v1.876c0 .22.076.404.228.556s.337.23.558.23h1.98c.22 0 .406-.078.557-.23.16-.15.23-.338.23-.558zm1.98-2.37v12.99c0 .61-.22 1.14-.66 1.58-.44.44-.967.66-1.582.66H16.502c-.614 0-1.142-.22-1.582-.66-.44-.44-.66-.97-.66-1.586V16.5c0-.614.22-1.142.66-1.582.44-.44.967-.66 1.582-.66h12.996c.615 0 1.14.22 1.582.66.44.44.66.967.66 1.58z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/infoBMKG" target="_blank">
+                                <span class="screen-reader-text">YouTube</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 46 46" role="img" aria-labelledby="youtube-icon">
+                                    <title id="youtube-icon">YouTube</title>
+                                    <path fill="#FFFFFF" d="M27.68 23c0-.3-.12-.52-.364-.657l-6.24-3.9c-.253-.163-.517-.172-.793-.025-.27.147-.402.374-.402.683v7.803c0 .31.136.537.404.682.13.067.256.1.378.1.164 0 .3-.042.416-.122l6.24-3.9c.243-.14.365-.36.365-.66zm6.242 0c0 .78-.004 1.39-.012 1.83-.008.438-.043.993-.104 1.662-.06.672-.15 1.27-.274 1.8-.13.592-.41 1.092-.84 1.5-.43.405-.935.64-1.512.705-1.804.203-4.53.303-8.18.303-3.65 0-6.375-.1-8.18-.304-.576-.064-1.082-.3-1.517-.706-.435-.407-.717-.907-.847-1.5-.114-.527-.2-1.127-.263-1.8-.06-.668-.095-1.223-.103-1.662-.008-.438-.012-1.05-.012-1.828 0-.78.004-1.39.012-1.828.008-.44.042-.995.103-1.665.062-.67.152-1.27.274-1.797.13-.593.41-1.093.84-1.5.432-.407.936-.642 1.513-.707 1.804-.203 4.53-.305 8.18-.305 3.648 0 6.375.102 8.18.305.576.065 1.08.3 1.516.707.436.406.718.906.85 1.5.112.528.2 1.127.26 1.797.062.67.097 1.226.104 1.665.008.438.012 1.048.012 1.83z"/>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="footer-copyright">&copy; 2026 - Badan Meteorologi, Klimatologi, dan Geofisika</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../include/assets/main.min.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"7cbaf3ec2b0e442aa509982450bb00ce","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f0a5eee4bacfce3',t:'MTc3NjkyMTEyMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
