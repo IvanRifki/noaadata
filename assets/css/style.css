@@ -410,3 +410,40 @@ hr {
     0% { background-color: #fef08a; }
     100% { background-color: transparent; }
 }
+
+/* BMKG Source Badge */
+.bmkg-source-badge {
+    position: fixed !important;
+    top: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 1000 !important;
+    background: rgba(30, 58, 138, 0.8) !important; /* Deep blue with glassmorphism */
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 999px !important; /* Pill style */
+    padding: 8px 20px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+}
+
+.source-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.source-info i {
+    font-size: 18px;
+    color: #fde047; /* Yellow icon for contrast */
+}
+
+.source-info b {
+    color: #fff;
+    font-weight: 800;
+}

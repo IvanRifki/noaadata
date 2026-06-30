@@ -26,6 +26,7 @@ export class MapModule {
 
         this.initBasemaps();
         this.initControls();
+        this.initSourceControl();
         
         setTimeout(() => this.instance.invalidateSize(), 500);
         return this.instance;
@@ -60,6 +61,24 @@ export class MapModule {
         };
 
         this.control = L.control.layers(this.layers.base, overlayMaps, { position: 'bottomright' }).addTo(this.instance);
+    }
+
+    initSourceControl() {
+        const SourceControl = L.Control.extend({
+            options: { position: 'topleft' },
+            onAdd: function() {
+                const container = L.DomUtil.create('div', 'bmkg-source-badge');
+                container.innerHTML = `
+                    <div class="source-info">
+                        <i class='bx bxs-info-circle'></i>
+                        <span>Sumber Data: <b>BMKG Indonesia</b></span>
+                    </div>
+                `;
+                return container;
+            }
+        });
+
+        this.instance.addControl(new SourceControl());
     }
 
     onLayerAdd(layerName, callback) {
